@@ -1,7 +1,7 @@
 import { styled } from 'styletron-react';
 import getColor from 'app/palette';
 
-export const Bar = styled('navbar', {
+export const Bar = styled('div', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
