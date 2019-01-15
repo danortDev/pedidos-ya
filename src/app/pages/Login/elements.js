@@ -8,7 +8,7 @@ export const Container = styled('main', {
   justifyContent: 'center'
 });
 
-export const Spacer = styled('div', {
-  height: '20px',
+export const Spacer = styled('div', ({ $size }) => ({
+  height: $size ==='bg' ? '80px' : '20px',
   widht: '100%'
-});
+}));

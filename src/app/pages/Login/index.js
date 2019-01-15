@@ -1,6 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import TextField from 'app/components/ui/TextField';
+import Button from 'app/components/ui/Button';
 import { Container, Spacer } from './elements';
 
 const Login = ({ }) => (
@@ -19,6 +20,10 @@ const Login = ({ }) => (
       label="Password"
       component={TextField}
     />
+    <Spacer $size="bg" />
+    <Button>
+      Login
+    </Button>
   </Container>
 );
 
