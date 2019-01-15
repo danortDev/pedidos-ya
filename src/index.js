@@ -5,8 +5,11 @@ import store from 'app/store';
 import { Provider as StyletronProvider } from 'styletron-react';
 import { Client as Styletron } from 'styletron-engine-atomic';
 import Routes from 'app/routes';
-
 import * as serviceWorker from './serviceWorker';
+
+// Global styles
+import './css/modules/reset.css';
+import './css/modules/typography.css';
 
 const engine = new Styletron();
 
