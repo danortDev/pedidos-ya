@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from 'app/store';
 import { Provider as StyletronProvider } from 'styletron-react';
 import { Client as Styletron } from 'styletron-engine-atomic';
 import Routes from 'app/routes';
@@ -9,9 +11,11 @@ import * as serviceWorker from './serviceWorker';
 const engine = new Styletron();
 
 ReactDOM.render(
-  <StyletronProvider value={engine}>
-    <Routes />
-  </StyletronProvider>,
+  <Provider store={store}>
+    <StyletronProvider value={engine}>
+      <Routes />
+    </StyletronProvider>
+  </Provider>,
   document.getElementById('root')
 );
 
