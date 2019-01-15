@@ -1,14 +1,12 @@
 import React from 'react';
-import { styled } from 'styletron-react';
-
-const GlobalStyles = styled('div', {
-  fontFamily: 'Roboto'
-});
+import Navbar from 'app/components/ui/Navbar';
+import { MainWrapper } from './elements';
 
 const App = ({ children }) => (
-  <GlobalStyles>
+  <MainWrapper>
+    <Navbar />
     {children}
-  </GlobalStyles>
+  </MainWrapper>
 );
 
 export default App;
