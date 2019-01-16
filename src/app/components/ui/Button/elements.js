@@ -6,6 +6,7 @@ export const Container = styled('button', {
   outline: 'none',
   border: 'none',
   justifyContent: 'center',
+  fontSize: '1.2em',
   alignItem: 'center',
   padding: '10px 20px',
   borderRadius: '4px',
