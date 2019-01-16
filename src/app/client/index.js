@@ -2,13 +2,11 @@ import 'fetch-everywhere';
 import omitBy from 'app/utils/omitBy';
 import { API_KEY_NAME } from 'app/constants/names';
 
-
 const buildHeaders = () => {
   return omitBy({
     Authorization: sessionStorage.getItem(API_KEY_NAME)
   }, (header) => !header);
 };
-
 
 const successHandler = (response) => {
   if (!response) return null;
@@ -22,17 +20,13 @@ const successHandler = (response) => {
   });
 };
 
-
 const errorHandler = (error) => {
   throw error;
 };
 
-
 const Client = {
   get: (url, options) => {
-    console.log(options);
     const params = { ...options, method: 'GET' };
-    console.log(params);
     return makeRequest(url, params);
   }
 };
@@ -42,7 +36,6 @@ const makeRequest = (url, params) => {
     headers: buildHeaders(),
     ...params,
   };
-  console.log(options, params);
   return fetch(url, options)
     .then(successHandler)
     .catch(errorHandler);

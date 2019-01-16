@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { compose, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { compose, bindActionCreators } from 'redux';
 import { reduxForm, formValueSelector, Field } from 'redux-form';
 import { login } from 'app/actions/auth';
 import validate from './validate';
@@ -15,8 +16,9 @@ import {
 
 class Login extends Component {
   onSubmit = async (values) => {
-    const { actions } = this.props;
+    const { actions, history } = this.props;
     await actions.login(values);
+    history.push('/');
   }
 
   render() {
@@ -69,6 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default compose(
+  withRouter,
   connect(mapStateToProps, mapDispatchToProps),
   reduxForm({ form: LOGIN_FORM, validate })
 )(Login);
