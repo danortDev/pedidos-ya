@@ -12,7 +12,7 @@ npm install
 node index --port=8080 --url=stg-api.pedidosya.com
 ```
 
-- Se debe crear un archivo `.env.local` cons las siguientes variables:
+- Se debe crear un archivo `.env.local` en el root del proyecto con las siguientes variables:
 ```
 REACT_APP_CLIENT_ID=<INSERT_CLIENT_ID_HERE>
 REACT_APP_CLIENT_SECRET=<INSERT_CLIENT_SECRET_HERE>
