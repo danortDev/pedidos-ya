@@ -1,15 +1,16 @@
 import omitBy from 'app/utils/omitBy';
+import { USER_FIELD_NAME, PASSWORD_FIELD_NAME } from 'app/constants/names';
 
 const validate = (values) => {
-  const noUsernameError = !values.user
+  const noUsernameError = !values[USER_FIELD_NAME]
     && 'User is required';
 
-  const noPasswordError = !values.password
+  const noPasswordError = !values[PASSWORD_FIELD_NAME]
     && 'Password is required';
 
   return omitBy({
-    user: noUsernameError,
-    password: noPasswordError
+    [USER_FIELD_NAME]: noUsernameError,
+    [PASSWORD_FIELD_NAME]: noPasswordError
   }, (item) => !item);
 };
 

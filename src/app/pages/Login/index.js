@@ -1,36 +1,48 @@
 import React, { Component } from 'react';
-import { compose } from 'redux';
+import { compose, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, formValueSelector, Field } from 'redux-form';
+import { login } from 'app/actions/auth';
 import validate from './validate';
 import TextField from 'app/components/ui/TextField';
 import Button from 'app/components/ui/Button';
-import { Container, Spacer } from './elements';
+import { Container, Spacer, FormError } from './elements';
+import {
+  LOGIN_FORM,
+  USER_FIELD_NAME,
+  PASSWORD_FIELD_NAME
+} from 'app/constants/names';
 
 class Login extends Component {
-  onSubmit = (values) => {
-    console.log('values', values);
+  onSubmit = async (values) => {
+    const { actions } = this.props;
+    await actions.login(values);
   }
 
   render() {
-    const { invalid, handleSubmit, submitting } = this.props;
+    const { invalid, handleSubmit, submitting, error } = this.props;
     return (
       <Container>
         <Field
-          name="user"
+          name={USER_FIELD_NAME}
           placeholder="User"
           label="Usuario"
           component={TextField}
         />
         <Spacer />
         <Field
-          name="password"
+          name={PASSWORD_FIELD_NAME}
           type="password"
           placeholder="Password"
           label="Password"
           component={TextField}
         />
-        <Spacer $size="bg" />
+        {!error && (<Spacer $size="bg" />)}
+        {error && (
+          <FormError>
+            {error}
+          </FormError>
+        )}
         <Button
           disabled={invalid || submitting}
           onClick={handleSubmit(this.onSubmit)}
@@ -44,11 +56,19 @@ class Login extends Component {
 
 const selector = formValueSelector('login-form');
 const mapStateToProps = (state) => ({
-  user: selector(state, 'user'),
-  password: selector(state, 'password')
+  user: selector(state, USER_FIELD_NAME),
+  password: selector(state, PASSWORD_FIELD_NAME),
+  initialValues: {
+    [USER_FIELD_NAME]: 'test_automation_000@pedidosya.com',
+    [PASSWORD_FIELD_NAME]: 'abc1234'
+  }
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({ login }, dispatch)
 });
 
 export default compose(
-  connect(mapStateToProps),
-  reduxForm({ form: 'login-form', validate })
+  connect(mapStateToProps, mapDispatchToProps),
+  reduxForm({ form: LOGIN_FORM, validate })
 )(Login);
