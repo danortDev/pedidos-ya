@@ -33,3 +33,5 @@ npm start
 - Instale `tinyColor` para manejar la paletta de colores aunque sea algo exagerado para este caso, solo para mostrar como manejaria los colores en un proyecto, es una de las cosas que suelen volverse dificil de mantener cuando una app escala. (es bueno especialmente si se quiere customizar de alguna manera la app).
 
 - Aunque solo necesitaba el form de login use `redux-form` por usar redux.
+
+- Por tiempo solo agregue un test basico haciendo un snapshot a un shallow del Home. Para probar propiamente tendria que configurar un mock de styletron y react-router-dom.
