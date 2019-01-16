@@ -7,8 +7,7 @@ import { API_KEY_NAME, AUTH_TOKEN_NAME } from 'app/constants/names';
 import { SET_USER } from 'app/constants/actions';
 
 
-const setUser = createAction(SET_USER);
-
+export const setUser = createAction(SET_USER);
 
 const getApiKey = async () => {
   const query = objectToQueryString({
@@ -25,7 +24,6 @@ const getApiKey = async () => {
   }
 }
 
-
 const authenticate = async (userData) => {
   const query = objectToQueryString(userData);
   try {
@@ -38,16 +36,21 @@ const authenticate = async (userData) => {
   }
 }
 
+export const getUserData = () => {
+  return async (dispatch) => {
+    const response = await Client.get(ENDPOINTS.ACCOUNT, {
+      headers: { Authorization: sessionStorage.getItem(AUTH_TOKEN_NAME) }
+    });
+    return dispatch(setUser(response));
+  }
+};
 
 export const login = (userData) => {
   return async (dispatch) => {
     await getApiKey();
     await authenticate(userData);
     try {
-      const response = await Client.get(ENDPOINTS.ACCOUNT, {
-        headers: { Authorization: sessionStorage.getItem(AUTH_TOKEN_NAME) }
-      });
-      return dispatch(setUser(response));
+      return dispatch(getUserData());
     } catch (error) {
       throw new SubmissionError({
         _error: 'Something wrong trying to get user data'

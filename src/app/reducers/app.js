@@ -1,8 +1,9 @@
 import createReducer from 'app/utils/createReducer';
-import { SET_USER } from 'app/constants/actions';
+import { SET_USER, SET_RESULTS } from 'app/constants/actions';
 
 const initialState = {
-  user: {}
+  user: null,
+  results: null
 };
 
 const actionHandlers = {
