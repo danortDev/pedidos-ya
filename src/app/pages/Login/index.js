@@ -59,11 +59,7 @@ class Login extends Component {
 const selector = formValueSelector('login-form');
 const mapStateToProps = (state) => ({
   user: selector(state, USER_FIELD_NAME),
-  password: selector(state, PASSWORD_FIELD_NAME),
-  initialValues: {
-    [USER_FIELD_NAME]: 'test_automation_000@pedidosya.com',
-    [PASSWORD_FIELD_NAME]: 'abc1234'
-  }
+  password: selector(state, PASSWORD_FIELD_NAME)
 });
 
 const mapDispatchToProps = (dispatch) => ({
