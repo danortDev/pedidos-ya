@@ -10,6 +10,10 @@ const actionHandlers = {
   [SET_USER]: (state, action) => ({
     ...state,
     user: action.payload
+  }),
+  [SET_RESULTS]: (state, action) => ({
+    ...state,
+    results: action.payload
   })
 };
 
