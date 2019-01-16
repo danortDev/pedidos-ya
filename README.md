@@ -14,7 +14,6 @@ node index --port=8080 --url=stg-api.pedidosya.com
 
 - Se debe crear un archivo `.env.local` cons las siguientes variables:
 ```
-NODE_PATH=src
 REACT_APP_CLIENT_ID=<INSERT_CLIENT_ID_HERE>
 REACT_APP_CLIENT_SECRET=<INSERT_CLIENT_SECRET_HERE>
 REACT_APP_GOOGLE_MAP_KEY=<INSERT_GOOGLE_MAPS_API_KEY_HERE>
